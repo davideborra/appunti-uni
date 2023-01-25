@@ -15,11 +15,13 @@
 \author{Davide Borra}
 \date{}
 \begin{document}
+\pagenumbering{roman}
 \begin{titlepage}
     \maketitle
     \tableofcontents
     \creativecommons
 \end{titlepage}
+\pagenumbering{arabic}
 %\setlength{\headheight}{30pt}
 \lhead{Davide Borra}
 \rhead{mod. 1}
@@ -291,13 +293,13 @@ dove $m\vec a_t$ è la forza di trascinamento e $m\vec a_c$ è la forza di Corio
 Osserviamo una particella $P$ che si muove lungo una certa traiettoria ed è sottoposta ad una forza $F$. 
 \begin{boxdef}[Lavoro elementare]
     Si definisce lavoro elementare compiuto dalla forza $F$ quando la particella compie uno spostamento $\d \vec s$ 
-    \[\delta L=\vec F\cdot d \vec S\]
+    \[\delta L=\vec F\cdot d \vec s\]
     Esso è una quantità scalare e si misura in $J=N\cdot m$
 \end{boxdef}
 Si utilizza il simbolo $\delta L$ perché non si tratta necessariamente di un differenziale esatto. 
 
 Osserviamo che solo la componente di $F$ parallela allo spostamento compie lavoro, per cui 
-\[\delta L=|\vec F|\cdot\! \d \vec s\cos \vartheta\]
+\[\delta L=|\vec F||\!\d \vec s|\cos \vartheta\]
 dove $\vartheta$ è l'angolo tra la forza e lo spostamento. Di conseguenza, ricordando le coordinate intrinseche, la forza compie lavoro solo se contribuisce ad aumentare o a diminuire il modulo della velocità.
 \subsection{Calcolo del lavoro lungo la traiettoria}
 Possiamo suddividere la traiettoria in tanti spostamenti elementari successivi. Il lavoro totale compiuto dalla forza $F$ da $A$ a $B$ lungo quella traiettoria sarà la somma dei lavori elementari, ovvero l'integrale di linea lingo la traiettoria:
@@ -515,10 +517,10 @@ Se agiscono più forze contemporaneamente, può succedere che una di esse divent
     In particolare se il polo è fisso $\vec v_\Omega=0$, quindi \[\frac{\d \vec L}{\d t} = \vec \tau_{\Omega}\]
 \end{proof}
 \begin{corollary*}[Conservazione del momento angolare]
-    In un sistema di riferimento inerziale, se si sceglie come polo un punto fisso, il momeento angolare di una particella si conserva se e solo se la risultante dei momenti torcenti delle forze agenti su di essa è nullo.
+    In un sistema di riferimento inerziale, se si sceglie come polo un punto fisso, il momento angolare di una particella si conserva se e solo se la risultante dei momenti torcenti delle forze agenti su di essa è nullo.
 \end{corollary*}
 \begin{shadedTheorem}[Momento dell'impulso]
-    In un sistema di riferimento inerziale, la variazione del momento angolare di una particella in un intervallo di tempo molto breve è uguale al momento dell'impulso applicato alla particella nello stesso intervallo.
+    In un sistema di riferimento inerziale, la variazione del momento angolare rispetto ad un polo $\Omega$ fisso di una particella in un intervallo di tempo molto breve è uguale al momento dell'impulso applicato alla particella nello stesso intervallo.
     \[\vec L_{\Omega}(t_2) -\vec L_{\Omega}(t_1) = \vec r \times \vec J_{1,2}\]
 \end{shadedTheorem}
 \begin{proof}
@@ -777,7 +779,7 @@ Nel 1686 Isaac Newton osservando il moto della Luna e dei gravi posti in prossim
 Tutte le prove sperimentali compiute finora hanno mostrato come la massa inerziale che compare nel secondo principio della dinamica e la massa gravitazionale che compare nella legge di gravitazione universale coincidono con un errore di $10^{-15}$.
 \subsection{Energia potenziale gravitazionale}
 Considerimamo un sistema di riferimento in coordinate polari in cui la massa $M$ si trova nell'origine. 
-\[L_{AB} =\int_A^B - G\frac{m_1m_2}{r_{12}^2}\hat e_r\cdot \!\d s =  \int_A^B - G\frac{m_1m_2}{r_{12}^2}\d r = - GMm\int_A^B\frac{\d r}{r^2} = GMm\left( \frac{1}{r_B} -\frac{1}{r_A} \right)\]
+\[L_{AB} =\int_A^B - G\frac{Mm}{r_{12}^2}\hat e_r\cdot \!\d \vec s =  \int_A^B - G\frac{Mm}{r_{12}^2}\d r = - GMm\int_A^B\frac{\d r}{r^2} = GMm\left( \frac{1}{r_B} -\frac{1}{r_A} \right)\]
 Abbiamo dimostrato che il lavoro non dipende dalla traiettoria, per cui la forza è conservativa. Di conseguenza è possibile definire un energia potenziale:
 \[U(r) = - \frac{GMm}{r}\]
 In questo modo non esiste un punto in cui l'energia potenziale sia nulla, scegliamo di fare in modo che sia nulla quando le masse si trovano ad una distanza infinita. 
