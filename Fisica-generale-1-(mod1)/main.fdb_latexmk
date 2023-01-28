@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1674580620 "/Users/davideborra/Documents/GitHub/appunti-uni/Fisica-generale-1-(mod1)/main.tex" "main.pdf" "main" 1674580621
-  "/Users/davideborra/Documents/GitHub/appunti-uni/Fisica-generale-1-(mod1)/main.tex" 1674580619 52798 baeced9d068bda2f58fd240e5d4f0c23 ""
+["pdflatex"] 1674917144 "/Users/davideborra/Documents/GitHub/appunti-uni/Fisica-generale-1-(mod1)/main.tex" "main.pdf" "main" 1674917145
+  "/Users/davideborra/Documents/GitHub/appunti-uni/Fisica-generale-1-(mod1)/main.tex" 1674580624 52798 baeced9d068bda2f58fd240e5d4f0c23 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm0800.tfm" 1136768653 1536 05df9db6aeccc4eea94fec15c9024f79 ""
@@ -315,10 +315,10 @@
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "CreativeCommons/by-nc-nd.png" 1672951571 20935 a4212c1a42d241a1351fc139b20de70b ""
   "lambdatex.sty" 1673637944 6705 c5aee9f06ad4070907f851642b5adb92 ""
-  "main.aux" 1674580621 10678 4eca52495d91891a35938412e31121af "pdflatex"
-  "main.out" 1674580621 9648 bb0dffc825f3cba82dab3f669459be72 "pdflatex"
-  "main.tex" 1674580619 52798 baeced9d068bda2f58fd240e5d4f0c23 ""
-  "main.toc" 1674580621 5344 21039ab4cb5eec509a27d3f758dcea7b "pdflatex"
+  "main.aux" 1674917145 10678 4eca52495d91891a35938412e31121af "pdflatex"
+  "main.out" 1674917145 9648 bb0dffc825f3cba82dab3f669459be72 "pdflatex"
+  "main.tex" 1674580624 52798 baeced9d068bda2f58fd240e5d4f0c23 ""
+  "main.toc" 1674917145 5344 21039ab4cb5eec509a27d3f758dcea7b "pdflatex"
   "src/attrito dinamico.png" 1673430744 67121 42fa3118ad70184be90f3b2e5e3c8c75 ""
   "src/elasticità.png" 1673367589 135605 09f65fcfe274c62a4703b13541a7f862 ""
   (generated)
