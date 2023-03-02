@@ -205,8 +205,8 @@ La proprietà (\textit{ii})è importante perché permette di definire $b$ usando
     Siano $V$ un $\K$-spazio vettoriale, $S\subseteq V$, $\dim V<\infty$ e $b(v,w)$ una forma bilineare simmetrica. Si definisce sottospazio perpendicolare a $S$ l'insieme 
     \[S^\perp:=\{v\in V\,|\,b(v,w)=0\ \forall w \in S\}\]
 \end{boxdef}
-\begin{exc}
-    Dimostrare che $S^\perp$ è un sottospazio vettoriale di $V$.
+\begin{exc}\label{exc: sottosp perp}
+    Dimostrare che $S^\perp$ è un sottospazio vettoriale di $V$.\qquad {\hyperref[sol: sottosp perp]{\footnotesize Soluzione a pag. \pageref*{sol: sottosp perp}}}
 \end{exc}
 \begin{lemma}
     Siano $V$ un $\K$-spazio vettoriale, $S\subseteq V$, $\dim V<\infty$. Sia inoltre $v\in V$ non isotropo. Allora \[\langle v \rangle \oplus v^\perp = V\]
@@ -442,8 +442,11 @@ Un'osservazione interessante è che il numero di 0, di 1 e di -1 non dipende dal
 In particolare lo è se lo è su una base.
 \begin{lemma}[Finestra sul mondo duale]
     Siano $V$ un $\K$-spazio vettoriale, $b:V\times V\to \K$ una forma bilineare simmetrica non degenere, allora esiste un isomorfismo
-    \[\begin{array}{ccccccl}            \psi : & V & \longrightarrow & V^\vee \\                 & v & \longmapsto     & \psi(v) : & V & \longrightarrow & \mathbb{K} \\&&&                 & w & \longmapsto     &\psi(v)(w):=b(v,w)       \end{array}\]
+    \[\begin{array}{ccccccl}            \psi : & V & \overset{\sim}{\longrightarrow}& V^\vee \\                 & v & \longmapsto     & \psi(v) : & V & \longrightarrow & \mathbb{K} \\&&&                 & w & \longmapsto     &\psi(v)(w):=b(v,w)       \end{array}\]
 \end{lemma}
+\begin{exc}\label{exc: lemma finestra}
+    La dimostrazione del lemma precedente è lasciata per esercizio. \qquad {\hyperref[sol: lemma finestra]{\footnotesize Soluzione a pag. \pageref*{sol: lemma finestra}}}
+\end{exc}
 %\vartriangleleft per sottospazi vettoriali
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -463,4 +466,36 @@ In particolare lo è se lo è su una base.
     \end{itemize}
 \end{proof}
 La dimostrazione è analoga per matrici e mappe antisimmetriche.
+
+\subsubsection*{Esercizio \ref{exc: sottosp perp}}\label{sol: sottosp perp}
+\begin{proof}Per definizione di sottospazio vettoriale, $S^\perp$ deve essere
+    \begin{itemize}
+        \item non vuoto:
+        \[0\in S^\perp\text{, infatti }b(0,w)=b(0\cdot 0,w)=0\cdot b(0,w)=0\]
+        \item chiuso rispetto a somma e prodotto per scalari:
+        \[\forall \]
+    \end{itemize}
+\end{proof}
+
+\subsubsection*{Esercizio \ref{exc: lemma finestra}}\label{sol: lemma finestra}
+\begin{proof}Le proprietà di $\psi$ seguono direttamente dalle proprietà di $b$:
+    \begin{itemize}
+        \item $\psi(v)$ è lineare $\forall v$
+            \[\psi(v)(\lambda_1w_1+\lambda_2w_2)=b(v,\lambda_1w_1+\lambda_2w_2)= \lambda_1b(v,w_1)+\lambda_2b(v,w_2) = \lambda_1\psi(v)(w_1)+\lambda_2\psi(v)(w_2) \]
+        \item  $\psi$ è lineare
+        \[\psi(\lambda_1v_1+\lambda_2v_2)=\lambda_1\psi(v_1)+\lambda_2\psi(v_2)\]
+        Si tratta di un'uguaglianza tra mappe, per cui è verificata se e solo se è verificata $\forall w$:
+        \[\psi(\lambda_1v_1+\lambda_2v_2)(w)= b(\lambda_1v_1+\lambda_2v_2,w)= \lambda_1b(v_1,w)+\lambda_2b(v_2,w)= \lambda_1\psi(v_1)(w)+\lambda_2\psi(v_2)(w)\]
+        \item $\psi$ è iniettiva, equivalentemente $\ker \psi =\{0\}$
+        \\Se $\psi(v)$ è la mappa nulla, allora $v=0$, ovvero se $\forall w, \psi(v)(w)=0$, allora $v=0$.
+        Prendiamo un qualsiasi $v,w\in W$. Sia $\beta=\{e_i\}_i$ una base di $V$ che diagonalizza $b$ (esiste perchè $b$ è simmetrica per ipotesi), allora
+        \[v=\sum_ix_ie_i\qquad \qquad w=\sum_jy_je_j.\]
+        Per linearità segue che
+        \[\psi(v)(w)=b\left(\sum_ix_ie_i, \sum_jy_je_j\right)=\sum_i\sum_jx_iy_jb(e_i,e_j).\]
+        Siccome la base $\beta$ diagonalizza $b$, segue che $i\neq j\implies b(e_i,e_j)=0$, quindi 
+        \[\psi(v)(w)=\sum_ix_iy_ib(e_i,e_i).\]
+        Inoltre, siccome la mappa $b$ è non degenere, per la legge di annullamento del prodotto, segue che $a_i=0\forall i$, quindi $v=0$. Per l'arbitrarietà di $w$, la mappa è iniettiva.
+        \item $\psi$ è suriettiva: segue dal teorema Nullità + Rango.
+    \end{itemize}
+\end{proof}
 \end{document}
