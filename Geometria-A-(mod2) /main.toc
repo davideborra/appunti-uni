@@ -3,4 +3,4 @@
 \contentsline {section}{\numberline {1}Forme bilineari}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Matrici simili}{1}{subsection.1.1}%
 \contentsline {paragraph}{Notazione}{2}{section*.2}%
-\contentsline {section}{\numberline {2}Soluzioni degli esercizi}{5}{section.2}%
+\contentsline {section}{\numberline {2}Soluzioni degli esercizi}{8}{section.2}%

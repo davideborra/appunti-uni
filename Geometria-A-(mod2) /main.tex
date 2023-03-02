@@ -239,6 +239,211 @@ Procediamo ora per induzione su $n=\dim V$:
 \end{itemize}
 \end{proof}
 
+\begin{ex}
+    [Sia $V=\R^3$ e $\beta = \{e_1,e_2,e_3\}$ la base canonica di $V$. In questa base sia $q(x,y,z)=xy+xz+yz$ una forma quadratica: diagonalizzarla.]
+    Non è presente il termine $x^2$ per cui dobbiamo fare in modo di ricavarlo. Poniamo quindi
+    \[\begin{cases}
+        x'=x\\
+        y'=y+x\\
+        z'=z
+    \end{cases}\qquad \qquad \begin{cases}
+        x=x'\\
+        y=y'-x'\\
+        z=z'
+    \end{cases}\]
+    Sostituiamo e completiamo il quadrato
+    \[q(x',y',z')=x'(y'-x')+x'z'+(y'-x')z'= -{x'}^2+x'y'+y'z'=-\left(x'-\frac{1}{2}y'\right)^2+\frac{1}{4}{y'}^2+y'z'\]
+    Cambiamo coordinate
+    \[\begin{cases}
+        x''=x'-\frac{1}{2}y'\\
+        y''=y'\\
+        z''=z'
+    \end{cases}\qquad \qquad \begin{cases}
+        x'=x''+\frac{1}{2}y''\\
+        y'=y''\\
+        z'=z''
+    \end{cases}\]
+    \[q(x'',y'',z'')=-{x''}^2+\frac{1}{4}{y''}^2+y''z''=-{x''}^2+\left( \frac{1}{2}y''+z'' \right)^2-{z''}^2\]
+    \[\begin{cases}
+        x'''=x''\\
+        y'''=\frac{1}{2}y''+z''\\
+        z'''=z''
+    \end{cases}\qquad \qquad \begin{cases}
+        x''=x'''\\
+        y''=2y'''-2z'''\\
+        z''=z'''
+    \end{cases}\]
+    \[q(x''',y''',z''')=-{x'''}^2+{y'''}^2-{z'''}^2\]
+
+    Ricaviamo ora le matrici di cambio di base:
+    \[\begin{aligned}
+        [I]\qquad \qquad &
+        \begin{pmatrix}
+            1&0&0\\
+            -1&1&0\\
+            0&0&1
+        \end{pmatrix}\begin{pmatrix}
+            x'\\y'\\z'
+        \end{pmatrix}= \begin{pmatrix}
+            x\\y\\z
+        \end{pmatrix}\\
+    [II]\qquad \qquad &
+        \begin{pmatrix}
+            1&\frac{1}{2}&0\\
+            0&1&0\\
+            0&0&1
+        \end{pmatrix}\begin{pmatrix}
+            x''\\y''\\z''
+        \end{pmatrix}= \begin{pmatrix}
+            x'\\y'\\z'
+        \end{pmatrix}\\
+    [III]\qquad \qquad &
+        \begin{pmatrix}
+            1&0&0\\
+            0&2&-2\\
+            0&0&1
+        \end{pmatrix}\begin{pmatrix}
+            x'''\\y'''\\z'''
+        \end{pmatrix}= \begin{pmatrix}
+            x''\\y''\\z''
+        \end{pmatrix}
+    \end{aligned}
+    \]
+    quindi
+    \[\underbrace{\begin{pmatrix}
+        1&0&0\\
+        -1&1&0\\
+        0&0&1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1&\frac{1}{2}&0\\
+        0&1&0\\
+        0&0&1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1&0&0\\
+        0&2&-2\\
+        0&0&1
+    \end{pmatrix}}_{M}\begin{pmatrix}
+        x'''\\y'''\\z'''
+    \end{pmatrix}= \begin{pmatrix}
+        x\\y\\z
+    \end{pmatrix}\]
+    da cui
+    \[{\renewcommand{\arraystretch}{2}
+        M^t\cdot\begin{pmatrix}
+        0&\frac{1}{2}&\frac{1}{2}\\
+        \frac{1}{2}&0&\frac{1}{2}\\
+        \frac{1}{2}&\frac{1}{2}&0
+    \end{pmatrix}\cdot M}=\begin{pmatrix}-1&0&0\\0&1&0\\0&0&-1\end{pmatrix}\]
+\end{ex}
+
+\begin{shadedTheorem}[Sylvester I]
+    Sia $\K$ un campo algebricamente chiuso. Sia $V$ un $\K$-spazio vettoriale con $\dim V=n\geq 1$. Sia $b:V\times V\to \K$ una forma bilineare simmetrica. Allora esiste una base 
+    \[\beta=\{u_1, \dots, u_n\}\]
+    tale che 
+    \[\begin{array}{rcl}
+        i\neq j & \implies  &b(u_i,u_j)=0;\\
+        1\leq i\leq r\leq n &\implies &b(u_i,u_i)=1;\\
+        r<i\leq n& \implies & b(u_i,u_i)=0.
+    \end{array}\]
+    Equivalentemente la forma quadratica rispetto a $\beta$ è 
+    \[q(x_1, \dots, x_n)=x_1^2+\dots+ x_r^2\]
+\end{shadedTheorem}
+\begin{proof}
+    Per il teorema precedente, esiste una abse ortogonale $\gamma=\{e_i\}_i$. Riordinando possiamo supporre che 
+    \[\begin{array}{rcl}
+        1\leq i\leq r\leq n &\implies &b(e_i,e_i)\neq 0;\\
+        r<i\leq n& \implies & b(e_i,e_i)=0.
+    \end{array}\]
+    Poniamo 
+    \[\begin{cases}
+        u_i:=\frac{e_i}{\sqrt{b(e_i,e_i)}}& i=1,\dots, r\\
+        u_i:=e_i& i=r+1, \dots, n
+    \end{cases}\]
+    Otteniamo che $\beta=\{u_i\}_i$ è la base cercata.
+\end{proof}
+
+\begin{shadedTheorem}[Sylvester II]
+    Siano $V$ un $\R$-spazio vettoriale e $b:V\times V\to \R$ una forma bilineare simmetrica. Allora esiste una base 
+    \[\beta=\{u_2, \dots, u_n\}\]
+    tale che 
+    \[\begin{array}{rcl}
+        i\neq j & \implies  &b(u_i,u_j)=0;\\
+        1\leq i\leq r\leq t\leq n &\implies &b(u_i,u_i)=1;\\
+        1\leq r< i\leq t\leq n &\implies &b(u_i,u_i)=-1;\\
+        t<i\leq n& \implies & b(u_i,u_i)=0.
+    \end{array}\]
+\end{shadedTheorem}
+La dimostrazione è analoga al teorema precedente ponendo 
+\[\begin{cases}
+    u_i:=\frac{e_i}{\sqrt{|b(e_i,e_i)|}}& i=1,\dots, r\\
+    u_i:=e_i& i=r+1, \dots, n
+\end{cases}\]
+e riordinando opportunamente.
+
+Un'osservazione interessante è che il numero di 0, di 1 e di -1 non dipende dalla scelta di una base ortogonale.
+\begin{shadedTheorem}[Rango]
+    ($V$ $\K$-spazio vettoriale, $\dim V=n$) Data una forma bilineare simmetrica $b:V\times V \to \K$ e una sua base diagonalizzante $\beta=\{e_i\}_i$, il numero di vettori $e_i$ tali che $b(e_i,e_i)=0$ non dipende dalla scelta della base diagonalizzante. Esso è uguale al rango di ogni matrice associata.
+\end{shadedTheorem}
+\begin{proof}
+    Ricordiamo il seguente lemma:
+    \begin{lemma}
+        Siano $A\in M{n\times m}(\K)$, $N\in \gln{n}{\K}$ e $M\in \gln{m}{\K}$, allora $\rk\left( NAM \right)=\rk A$.
+    \end{lemma}
+    Siano $\beta$ e $\beta'$ due basi, $M=M_{\beta\beta'}(Id)$, $A=M_\beta(b)$ e $B=M_{\beta'}(b)$. Allora per dimostrazione precedente si ha $B=M^tAM$. Per il lemma appena enunciato segue che, siccome $M\in \gln{n}{\K}$, $\rk B=\rk A$.
+    Supponiamo che esistano due basi $\beta=\{e_i\}_i$ e $\beta'=\{u_i\}_i$ diverse tali che (numeri di 1 e -1 diversi).
+    \begin{itemize}
+        \item \[\begin{array}{rcl}
+            i\neq j & \implies  &b(e_i,e_j)=0;\\
+            1\leq i\leq t\leq r\leq n &\implies &b(e_i,e_i)=1;\\
+            1\leq t< i\leq r\leq n &\implies &b(e_i,e_i)=-1;\\
+            r<i\leq n& \implies & b(e_i,e_i)=0.
+        \end{array}\]
+        \item \[\begin{array}{rcl}
+            i\neq j & \implies  &b(u_i,u_j)=0;\\
+            1\leq i\leq s\leq r\leq n &\implies &b(u_i,u_i)=1;\\
+            1\leq s< i\leq r\leq n &\implies &b(u_i,u_i)=-1;\\
+            r<i\leq n& \implies & b(u_i,u_i)=0.
+        \end{array}\]
+    \end{itemize}
+    con $s\neq t$. È lecito supporre che $t>s$ (altrimenti scegliamo al posto di $U$ e $W$ i rispettivi complementi diretti a $V$). Siano $U=\langle e_1, \dots, e_t\rangle$ e $W=\langle u_{s+1},\dots, u_n\rangle$. Segue quindi che $\dim U=t$ e $\dim W=n-s$, da cui 
+    \[\dim U+\dim W=n-s+t>n,\]
+    quindi per la formula di Grassman segue che $\dim U\cap V>0$. Prendiamo quindi un vettore non nullo $v\in U\cap V$.
+    \[v=\sum_{i=1}^ta_ie_i=\sum_{i=s+1}^nb_iu_i\] 
+    per cui
+    \[\begin{aligned}
+        b(v,v)&=\sum_{i=1}^t\underbrace{b(e_i,e_i)}_1a_i^2= \sum_{i=1}^ta_i^2>0\\
+        &=\sum_{i=s+1}^n\underbrace{b(u_i,u_i)}_{-1}b_i^2= -\sum_{i=s+1}^nb_i^2<0\\
+    \end{aligned}.\]
+    Si presenta quindi un assurdo, per cui deve essere che $s=t$.
+\end{proof}
+\begin{boxdef}[Rango]
+    ($V$ $\K$-spazio vettoriale, $\dim V=n$) Si definisce rango di una forma bilineare simmetrica $b:V\times V\to \K$ il numero di vettori $e_i$ di una base diagonalizzante tali che $b(e_i,e_i)\neq 0$. Esso si indica $\rk b$. Se $\rk b=\dim V$, allora la forma si dice non degenere.
+\end{boxdef}
+\begin{boxdef}[Segnatura]
+    Siano $V$ un $\R$-spazio vettoriale, $b:V\times V\to \K$ una forma bilineare simmetrica e $\beta=\{e_i\}_i$ una base diagonalizzante normalizzata. 
+    Allora si definiscono
+    \begin{itemize}
+        \item \textbf{indice di positività:} $t=\#\{e\in \beta\,|\, b(e,e)=1\}$
+        \item \textbf{indice di negatività:} $s=\#\{e\in \beta\,|\, b(e,e)=-1\}$
+    \end{itemize}
+    La coppia $(t,s)$ è detta segnatura di $b$.
+\end{boxdef}
+\begin{boxdef}[Forme definite positive/negative]
+    ($V$ $\R$-spazio vettoriale, $\dim V=n$) Una forma quadratica $q$ su $V$ si dice:
+    \begin{itemize}
+        \item \textbf{definita positiva} se $q(v)>0\ \ \forall\,v\in V $
+        \item \textbf{definita negativa} se $q(v)<0\ \ \forall\,v\in V $
+        \item \textbf{semidefinita positiva} se $q(v)\geq0\ \ \forall\,v\in V $
+        \item \textbf{semidefinita negativa} se $q(v)\leq0\ \ \forall\,v\in V $ 
+    \end{itemize}
+\end{boxdef}
+In particolare lo è se lo è su una base.
+\begin{lemma}[Finestra sul mondo duale]
+    Siano $V$ un $\K$-spazio vettoriale, $b:V\times V\to \K$ una forma bilineare simmetrica non degenere, allora esiste un isomorfismo
+    \[\begin{array}{ccccccl}            \psi : & V & \longrightarrow & V^\vee \\                 & v & \longmapsto     & \psi(v) : & V & \longrightarrow & \mathbb{K} \\&&&                 & w & \longmapsto     &\psi(v)(w):=b(v,w)       \end{array}\]
+\end{lemma}
 %\vartriangleleft per sottospazi vettoriali
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
