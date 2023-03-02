@@ -1,0 +1,110 @@
+%Update 27/02/2023
+% Changelog
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}     %type of document
+\usepackage{lambdatex} 
+
+\usepackage{tasks}
+\usepackage{exsheets}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+\title{Strumenti informatici per la matematica}
+\author{Davide Borra}
+\date{}
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\everymath{\displaystyle}
+\definecolor{zun}{HTML}{C8D6FD}
+
+\begin{document}
+
+\lhead{}
+\chead{}
+\rhead{Indice}
+\rfoot{\runauthor}
+
+\begin{titlepage}
+    \newgeometry{left=3cm, right=3cm, bottom=2cm, top =3cm} 
+    \pagestyle{empty}
+    \begin{center}
+        \vspace*{\fill}
+        \vspace{0.5cm}
+        \textbf{\Huge \runtitle}\\\vspace{5mm}
+        \textsc{\Large \runauthor}
+        \vspace{5cm}
+    \end{center}
+    \vspace*{\fill}
+    v. 1.0\\
+    \rule{0.8\linewidth}{0.5mm}\\
+    {\footnotesize\href{mailto:davide.borra@studenti.unitn.it}{davide.borra@studenti.unitn.it} - \href{http://davideborra.github.io}{davideborra.github.io}}
+    \restoregeometry
+\end{titlepage}
+\thispagestyle{empty}
+
+    \tableofcontents
+    \creativecommons
+
+\lhead{\runtitle}
+\chead{}
+\rhead{\rightmark}
+\rfoot{\runauthor}
+\newpage
+\begin{abstract}
+    \LaTeX \ non è un word processor, è un formattatore di testi. Un documento \texttt{.tex} è un file di testo che contiene testo e comandi. Per visualizzare il documento bisogna compilarlo. Esso è lo strumento migliore per la produzione di testi matematici.
+\end{abstract}
+\section{Introduzione a \LaTeX}
+\subsection{Il preambolo}
+\paragraph{\textbackslash\texttt{documentclass}} Descrive le regole generali per produrre il documento:
+\begin{itemize}
+    \item \texttt{article} per articoli scientifici fino a 20 pagine
+    \item \texttt{book} per libri più ampi
+    \item \texttt{letter} per lettere
+    \item \texttt{beamer} per slides
+\end{itemize}
+Successivamente si ha una parte di documento detta preambolo, dove vengono caricati pacchetti aggiuntivi, specificate alcune impostazioni generali del documento e definiti comandi custom.
+
+Fondamentali nel preambolo sono:
+\\ \texttt{ \textbackslash usepackage[utf8]\{inputenc\}\\
+\textbackslash usepackage[T1]\{fontenc\}\\
+\textbackslash usepackage[italian]\{babel\}\\
+\textbackslash usepackage[a4paper, portrait, margin=2cm]\{geometry\}}\\
+che nell'ordine definiscono l'encoding del file (in modo che supporti, ad esempio, le lettere accentate), il font in modo da avere font completi, la sillabazione italiana e le parole italiane nei comandi e l'ultimo che definisce la dimensione del foglio.
+\subsection{Il documento}
+Il corpo del documento va racchiuso tra \texttt{\textbackslash begin\{document\}} e \texttt{\textbackslash end\{document\}}. 
+
+Una cosa interessante da sapere è che \LaTeX\ interpreta il punto come fine della frase, quindi se deve andare a capo preferisce farlo lì. Se vogliamo evitare che questo succeda dobbiamo usare \textasciitilde \ al posto dello spazio.
+\subsection{La classe \texttt{letter}}
+La classe letter premette di specificare indirizzo, (\texttt{\textbackslash address\{\dots\}}), la firma (\texttt{\textbackslash signature\{\dots\}}) e la data (\texttt{\textbackslash date\{\dots\}}). La lettera deve essere racchiusa tra \texttt{\textbackslash begin\{letter\}\{\textit{\textless destinatario\textgreater}\}} e \texttt{\textbackslash end\{letter\}}.
+
+\subsection{La classe \texttt{article}}
+La classe article ha dei comandi per specificare titolo, autore e data. Per creare il titolo con quei parametri si mette il comando \textbackslash\texttt{maketitle}. Inoltre esiste l'ambiente \texttt{abstract} dove va collocato il sommario dell'articolo. L'opzione \texttt{draft} della classe article non carica le immagini e mette in evidenza le righe che escono dai margini. Article ha anche il formato \texttt{twocolumn}
+
+\subsection{Formattazione}
+Per formattare il testo si usa \textbackslash\texttt{textbf\{\dots\}} per il grassetto, \textbackslash\texttt{textit\{\dots\}} per il corsivo e \textbackslash\texttt{underline\{\dots\}} per il sottolineato. Inoltre esistono \textbackslash\texttt{textsc\{\dots\}} per il maiuscoletto e \textbackslash\texttt{texttt\{\dots\}} per il monospaziato (typewriter).Un'alternativa è specificare (ad esempio)  all'interno del blocco (racchiuso tra graffe) da mettere in grassetto \{\textbackslash\texttt{bf~\dots}\}. Esiste anche il comando \textbackslash\texttt{em} che mette corsivo o plain in base al contesto. 
+\subsubsection{{\color{yellow} I} {\color{orange} c}{\color{red} o}{\color{magenta} l}{\color{purple} o}{\color{blue} r}{\color{teal} i}}
+Per poter usare i colori serve il pacchetto \textbackslash\texttt{usepackage[dvipsnames]\{xcolor\}}. Per cambiare il colore si usa \textbackslash\texttt{color\{\textit{\textless nomecolore\textgreater}\}}. Per evidenziare si usa invece \textbackslash\texttt{color\{\textit{\textless nomecolore\textgreater}\}}. Per definire un colore si usa invece \textbackslash\texttt{definecolor\{HTML\}\{{\color{zun}C8D6FD}\}} da mettere nel preambolo.
+\subsubsection{Liste}
+In \LaTeX\ esistono due tipi di liste:
+\begin{itemize}[leftmargin=*]
+    \item \texttt{enumerate} per enenchi numerati;
+    \item \texttt{itemize} per elenchi puntati.
+\end{itemize}
+È possibile annidare liste fino a 4 volte anche anternando \texttt{enumerate} e \texttt{itemize}. Ogni riga deve essere preceduta da \textbackslash\texttt{item}.
+
+\[\begin{aligned}
+    y'= \lim_{h\to 0} \frac{f(x+h)-f(x_0)}{h}= \lim_{h\to 0}\frac{-(x+h)^2+4(x+h)+x^2-4x}{h}=\\=\frac{\cancel{-x^2}-h^2-2hx+\cancel{4x}+h+\cancel{x^2}-\cancel{4x}}{h}= \lim_{h\to 0}\frac{\cancel{h}(\cancel{-h}-2x+4)}{\cancel{h}}=-2x+4
+\end{aligned}\]
+
+\end{document}

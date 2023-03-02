@@ -1,0 +1,261 @@
+%Update 27/02/2023
+% Changelog
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}     %type of document
+\usepackage{lambdatex} 
+
+\let\undl\underline
+
+\newcommand{\gln}[2]{\mathpzc{Gl}_{#1}(#2)}
+
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+\title{Geometria A}
+\author{Davide Borra}
+\date{}
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\everymath{\displaystyle}
+
+\begin{document}
+
+\lhead{}
+\chead{}
+\rhead{Indice}
+\rfoot{\runauthor}
+
+\begin{titlepage}
+    \newgeometry{left=3cm, right=3cm, bottom=2cm, top =3cm} 
+    \pagestyle{empty}
+    \begin{center}
+        \vspace*{\fill}
+        \vspace{0.5cm}
+        \textbf{\Huge \runtitle}\\\textsc{secondo modulo}\\\vspace{5mm}
+        \textsc{\Large \runauthor}
+        \vspace{5cm}
+    \end{center}
+    \vspace*{\fill}
+    v. 1.0\\
+    \rule{0.8\linewidth}{0.5mm}\\
+    {\footnotesize\href{mailto:davide.borra@studenti.unitn.it}{davide.borra@studenti.unitn.it} - \href{http://davideborra.github.io}{davideborra.github.io}}
+    \restoregeometry\newpage
+    \thispagestyle{empty}
+    \begin{abstract}
+        \centering Queste sono le note prodotte durante il secondo modulo del corso di Geometria A, tenuto dal prof.~Marco Andreatta. Il docente del corso segue il libro \say{Geometria 1} di Edoardo Sernesi (Ed. Bollati Boringhieri).
+    \end{abstract}
+    \tableofcontents
+    \creativecommons
+    
+    \lhead{\runtitle}
+    \chead{}
+    \rhead{\rightmark}
+    \rfoot{\runauthor}
+\end{titlepage}
+
+
+\section{Forme bilineari}
+\begin{boxdef}[forma bilineare]
+    Sia $V$ un $\K$-spazio vettoriale. Si dice forma bilineare una mappa lineare
+    \[f:V\times V\to \K\]
+    lineare rispetto ad entrambi gli argomenti, ovvero $\forall v_1, v_2, w_1, w_2 \in V$, $\forall k\in \K$
+    \begin{tasks}(2)
+        \task[\textbullet] $f(v_1+v_2, w_1)=f(v_1,w_1)+f(v_2,w_1)$
+        \task[\textbullet] $f(v_1, w_1+w_2)=f(v_1,w_1)+f(v_1,w_2)$
+        \task[\textbullet] $f(kv_1, w_1)=kf(v_1,w_1)$
+        \task[\textbullet] $f(v_1, kw_1)=kf(v_1,w_1)$
+    \end{tasks}
+\end{boxdef}
+
+Esistono inoltre alcune forme multilineari particolari:
+\begin{boxdef}[Forme bilineari simmetriche]
+    Sia $V$ un $\K$-spazio vettoriale. Una forma bilineare $f:V\times V \to \K$ si dice simmetrica se $\forall v, w\in V$
+    \[f(v,w)=f(w,v)\]
+\end{boxdef}
+\begin{boxdef}[Forme bilineari antisimmetriche]
+    Sia $V$ un $\K$-spazio vettoriale. Una forma bilineare $f:V\times V \to \K$ si dice antisimmetrica se $\forall v, w\in V$
+    \[f(v,w)=-f(w,v)\]
+\end{boxdef}
+Data una matrice, ad essa è associata una forma bilineare del tipo $f_A(x,y)=x^t\cdot A \cdot y$. La dimostrazione del fatto che questa mappa sia bilineare segue dalla proprietà distributiva del prodotto tra matrici.
+\begin{exc}\label{exc: simmetriche sse}
+    Dimostrare che $f_A$ è simmetrica se e solo se $A$ è simmetrica, ovvero se e solo se $A=A^t$. 
+    \qquad {\hyperref[sol: simmetriche sse]{\footnotesize Soluzione a pag. \pageref*{sol: simmetriche sse}}}
+\end{exc}
+
+
+
+\begin{shadedTheorem}[Matrice associata]
+    Sia $V$ un $\K$-spazio vettoriale con dimensione $n$ finita e $\beta=\{e_1, \dots, e_n\}$ una base di $V$. Siano inoltre $f:V\times V \to \K$ una forma bilineare e $A=\left( f(e_i,e_j) \right)_{ij}\in M_{n\times n }(\K)$. Allora se $v=\sum_ia_ie_i$ e $w=\sum _jb_je_j$, si ha 
+    \[f(v,w)=\left( a_1,\dots, a_n \right) \cdot A \cdot \begin{pmatrix}
+        b_1\\\vdots\\ b_n
+    \end{pmatrix}\]
+\end{shadedTheorem}
+\begin{proof}
+    \[
+    \begin{aligned}
+        f(v,w)= f\left(\sum_ia_ie_i,\sum_ja_je_j\right)= \sum_ia_i\left( \sum_j b_jf(e_i,e_j) \right)
+    \end{aligned}
+    \]
+    Osserviamo che 
+    \[\left( a_1,\dots, a_n \right) \cdot A \cdot \begin{pmatrix}
+        b_1\\\vdots\\ b_n
+    \end{pmatrix} = \left( a_1,\dots, a_n \right)\begin{pmatrix}
+        \sum_j b_jf(e_1,e_j)\\ \vdots \\ \sum_j b_jf(e_n,e_j)
+    \end{pmatrix}  = \sum_ia_i\left( \sum_j b_jf(e_i,e_j)\right)\]
+    da cui la tesi.
+\end{proof}
+\begin{oss}
+    Scelta una base esiste una corrispondenza biunivoca tra le forme bilineari e le matrici e una corrispondenza biunivoca tra le forme bilineari simmetriche e le matrici simmetriche.
+\end{oss}
+\subsection{Matrici simili}
+\begin{lemma}[Matrici simili]
+    Siano $\beta=\{e_1, \dots, e_n\}$ e $\beta'=\{u_1, \dots, u_n\}$ due basi di $V$, $\K$-spazio vettoriale. Sia $f_V\times V\to \K$ una forma bilineare e siano $A=(f(e_i,e_j))_{ij}$ e $A=(f(u_i,u_j))_{ij}$ le matrici associate alla mappa $f$ in $\beta $ e $\beta'$ rispettivamente. Allora $\exists M=M_{\beta\beta'}(id)\in \gln{n}{\K}\ :\ B=M^t AM$
+\end{lemma}
+\paragraph{Notazione} se $v= \sum_ix_ie_i= \sum _ix'_iu_i$, allora $\underline x = (v)_\beta$ e $\underline x' = (v)_\beta'$. Analogamente per $w$ indicando le coordinate con $y$.
+\begin{proof}
+    \[\underline{x} = M\undl x'\qquad \qquad \undl y = M \undl y'\]
+    da cui 
+    \[f(v,w)= \undl x^tA \undl y = (M\undl x)^t A (M\undl y) = ( \undl x')^tM^tAM\undl y = ( \undl x')^t B \undl y\]
+    quindi $B=M^tAM$
+\end{proof}
+\begin{boxdef}[Matrici congruenti]
+    Due matrici $A,B\in M_{n\times n}(\K)$ si dicono congruenti se $\exists M \in \gln{n}{K}:$
+    \[B=M^tAM\]
+\end{boxdef}
+
+\begin{boxdef}[Base ortogonale]
+    Siano $V$ un $\K$-spazio vettoriale, $\dim V<\infty$, e $\beta$ una base di $V$. Se $i\neq j\implies b(e_i,e_j)=0$ , la base si dice diagonalizzante o ortogonale per la forma bilineare $b$. 
+\end{boxdef}
+\begin{oss}
+    Se la base è ortogonale, allora la matrice associate $A=(b(e_i,e_j))_{ij}$ è diagonale.
+\end{oss}
+
+\begin{boxdef}[Forma quadratica associata]
+    Siano $V$ un $\K$-spazio vettoriale, $\dim V<\infty$, $b: V\times V \to \K$ bilineare simmetrica. Si definisce la forma quadratica associata
+    \[\funcdef{q}{V}{\K}{v}{b(v,v)}\]
+\end{boxdef}
+\begin{oss}
+    Non è lineare.
+\end{oss}
+\begin{ricorda}
+    Si dice forma una mappa ad un campo, non necessariamente lineare. 
+\end{ricorda}
+\paragraph*{Proprietà} (seguono dalla linearità di $b$)
+\begin{enumerate}[label={\it\roman*})]
+    \item $q(\lambda v)=\lambda^2q(v)$
+    \item $2b(v,w)=q(w+v)-q(v)-q(w)$
+\end{enumerate}
+La proprietà (\textit{ii})è importante perché permette di definire $b$ usando $q$ e viceversa.
+
+\begin{oss}
+    Consideriamo una base $\beta=\{e_1,\dots, e_n\}$ di $V$, allora un vettore generico si esprime in coordinate come 
+    \[v=\sum_ix_ie_i\]
+    da cui 
+    \[b(v,w)= \begin{pmatrix}
+        x_1&\cdots&x_n
+    \end{pmatrix} \begin{pmatrix}
+        a_{ij}
+    \end{pmatrix}_{ij}\begin{pmatrix}
+        x_1\\\vdots\\x_n
+    \end{pmatrix}=\sum_{ij}a_{ij}x_ix_j\]
+    per cui in coordinate una forma quadratica è un polinomio omogeneo di secondo grado nelle variabili $x_i$ (è importante ricordare che per ipotesi $a_{ij}=a_{ji}\ \forall ij$).
+\end{oss}
+
+\begin{ex}[Consideriamo $\R^2$ con la base canonica e la forma quadratica 
+    \[q(x_1,x_2)=3x_1^2-2x_1x_2-x_2^2\]]
+    \[q(x_1,x_2)=3x_1^2-2x_1x_2-x_2^2=3x_1^2-x_1x_2-x_2x_1-x_2^2= \begin{pmatrix}
+        x_1&x_2
+    \end{pmatrix} \begin{pmatrix}
+        3&-1\\-1&-1
+    \end{pmatrix} \begin{pmatrix}
+        x_1\\x_2
+    \end{pmatrix} \]
+    Essa è quindi associata alla forma bilineare 
+    \[b\left( \begin{pmatrix}
+        x_1\\x_2
+    \end{pmatrix},\begin{pmatrix}
+        x_1\\x_2
+    \end{pmatrix}\right) = \begin{pmatrix}
+        x_1&x_2
+    \end{pmatrix} \begin{pmatrix}
+        3&-1\\-1&-1
+    \end{pmatrix} \begin{pmatrix}
+        x_1\\x_2
+    \end{pmatrix} \]
+\end{ex}
+
+\begin{boxdef}[Vettori isotropi]
+    Siano $V$ un $\K$-spazio vettoriale, $\dim V<\infty$ e $b(v,w)$ una forma bilineare simmetrica. Un vettore $v\in V$ si dice isotropo se 
+    \[b(v,v)=q(v)=0\]
+\end{boxdef}
+
+\begin{boxdef}[Spazio ortogonale]
+    Siano $V$ un $\K$-spazio vettoriale, $S\subseteq V$, $\dim V<\infty$ e $b(v,w)$ una forma bilineare simmetrica. Si definisce sottospazio perpendicolare a $S$ l'insieme 
+    \[S^\perp:=\{v\in V\,|\,b(v,w)=0\ \forall w \in S\}\]
+\end{boxdef}
+\begin{exc}
+    Dimostrare che $S^\perp$ è un sottospazio vettoriale di $V$.
+\end{exc}
+\begin{lemma}
+    Siano $V$ un $\K$-spazio vettoriale, $S\subseteq V$, $\dim V<\infty$. Sia inoltre $v\in V$ non isotropo. Allora \[\langle v \rangle \oplus v^\perp = V\]
+\end{lemma}
+\begin{proof}
+    Prendo un qualsiasi $w\in V$, allora sottraggo a $w$ la sua componente lungo $v$ e dimostro che appartiene a $v^\perp$, infatti 
+    \[b\left( w-\frac{b(w,v)}{b(v,v)}v,v \right)= b(w,v)-b\left(\frac{b(w,v)}{b(v,v)}v,v\right)= b(w,v)-\frac{b(w,v)}{b(v,v)}b(v,v)=0\]
+    quindi 
+    \[ w-\frac{b(w,v)}{b(v,v)}v\in v^\perp\]
+    Allora posso scrivere $w$ come la somma di un vettore in $\langle v\rangle$ e un vettore in $v^\perp$:
+    \[w=\underbrace{\frac{b(w,v)}{b(v,v)}v}_{\in\langle v\rangle}+\underbrace{\left( w-\frac{b(w,v)}{b(v,v)}v \right)}_{\in v^\perp}\]
+    di conseguenza \(\langle v \rangle + v^\perp = V\). Inoltre osserviamo che per costruzione di $v^\perp$, \(\langle v \rangle \cap v^\perp = \{0\}\), quindi la somma è diretta.
+\end{proof}
+
+\begin{shadedTheorem}[Diagonalizzabilità di forme bilineari]
+    Siano $V$ un $\K$-spazio vettoriale, $\dim V<\infty$. Se $b$ è una forma bilineare simmetrica, allora esiste una base ortogonale per $b$, ovvero esiste una matrice $M\in \gln{n}{\K}$ tale che $M^tAM$ è diagonale.
+\end{shadedTheorem}
+
+\begin{proof}
+    Se $b(v,w)$ è identicamente nulla, il teorema vale. Altrimenti possiamo supporre che $\exists v,w\in V: b(v,w)\neq 0$. Esiste quindi un vettore non isotropo, infatti 
+    \begin{itemize}
+        \item se $b(v,v)\neq 0$, è $v$;
+        \item se $b(w,w)\neq 0$, è $w$;
+        \item altrimenti, se $b(v,v)=b(w,w)=0$, $b(v+w,v+w)=b(v,v)+b(w,w)+2b(v,w)=2b(v,w)\neq 0$, per cui il vettore non isotropo é $v+w$.
+    \end{itemize}
+Procediamo ora per induzione su $n=\dim V$:
+\begin{itemize}
+    \item[$\N0)$] Se $n=1$ il teorema è vero (una matrice $1\times 1$ è diagonale)
+    \item[$\N1)$] Supponiamo vero il teorema per $\dim V=n$, dimostriamo che3 vale per $\dim V = n+1$, ovvero che esiste una base diagonalizzante per ogni matrice simmetrica e per ogni spazio vettoriale di dimensione $n$. Prendiamo quindi un vettore $e_1$ non isotropo. Definiamo quindi il suo spazio perpendicolare, che (per il lemma precedente e la formula di Grassman) ha dimensione $n$. Per ipotesi induttiva esiste quindi una base ortogonale $\gamma=\{e_2, \dots, e_n\}$ di $e_1^\perp$ per $b|_{e_1^\perp}$, per cui la base cercata è \[\beta=\gamma \cup \{e_1\}=  \{e_1, \dots, e_n\}\]
+\end{itemize}
+\end{proof}
+
+%\vartriangleleft per sottospazi vettoriali
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Soluzioni degli esercizi}
+\subsubsection*{Esercizio \ref{exc: simmetriche sse}}\label{sol: simmetriche sse}
+\begin{proof}~
+    \begin{itemize}
+        \item [\say{$\Rarr$}] Assumiamo che la mappa sia bilineare simmetrica e dimostriamo che $A=A^t$. In particolare si ha che $f_A(x,y)=f_A(y,x)$. Osserviamo che se $k \in \K$ come $\K$ spazio vettoriale, $k^t=k$, quindi (ricordado che la trasposizione inverte l'ordine nel prodotto tra matrici)
+        \[f_A(x,y)=[f_A(x,y)]^t=\left( x^t\cdot A \cdot y \right)^t= y^t\cdot  A^t \cdot \left( x^t \right)^t= y^t\cdot A^t \cdot x \] 
+        Per ipotesi si ha che $f_A(x,y)=f_A(y,x)$, quindi 
+        \[y^t\cdot A^t \cdot x= y^t\cdot A \cdot x\]
+        da cui segue $A=A^t$.
+        \item [\say{$\Larr$}] Assumiamo $A=A^t$ e dimostriamo che $f_A(x,y)=f_A(y,x)$. Per quanto detto prima $f_A(x,y)=y^t\cdot A^t\cdot x$. Inoltre per ipotesi $A=A^t$, quindi $f_A(x,y)=y^t\cdot A\cdot x=f_A(y,x)$.
+    \end{itemize}
+\end{proof}
+La dimostrazione è analoga per matrici e mappe antisimmetriche.
+\end{document}

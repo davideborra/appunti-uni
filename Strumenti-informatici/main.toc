@@ -1,0 +1,11 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione a \LaTeX }{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Il preambolo}{2}{subsection.1.1}%
+\contentsline {paragraph}{\textbackslash \texttt {documentclass}}{2}{section*.2}%
+\contentsline {subsection}{\numberline {1.2}Il documento}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}La classe \texttt {letter}}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}La classe \texttt {article}}{2}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Formattazione}{2}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}{\color {yellow} I} {\color {orange} c}{\color {red} o}{\color {magenta} l}{\color {purple} o}{\color {blue} r}{\color {teal} i}}{2}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Liste}{3}{subsubsection.1.5.2}%
