@@ -6,9 +6,9 @@
 \usepackage{lambdatex} 
 
 \let\undl\underline
-
+\newcommand{\scp}[1][\cdot,\cdot]{\left\langle #1 \right\rangle}
 \newcommand{\gln}[2]{\mathpzc{Gl}_{#1}(#2)}
-
+\let\sottosp\vartriangleleft
 
 \makeatletter
 \renewcommand*\env@cases[1][1.2]{%
@@ -59,12 +59,12 @@
     \tableofcontents
     \creativecommons
     
-    \lhead{\runtitle}
+    
+\end{titlepage}
+    \lhead{\runtitle}\
     \chead{}
     \rhead{\rightmark}
     \rfoot{\runauthor}
-\end{titlepage}
-
 
 \section{Forme bilineari}
 \begin{boxdef}[forma bilineare]
@@ -433,8 +433,8 @@ Un'osservazione interessante è che il numero di 0, di 1 e di -1 non dipende dal
 \begin{boxdef}[Forme definite positive/negative]
     ($V$ $\R$-spazio vettoriale, $\dim V=n$) Una forma quadratica $q$ su $V$ si dice:
     \begin{itemize}
-        \item \textbf{definita positiva} se $q(v)>0\ \ \forall\,v\in V $
-        \item \textbf{definita negativa} se $q(v)<0\ \ \forall\,v\in V $
+        \item \textbf{definita positiva} se $q(v)>0\ \ \forall\,v\in V\setminus\{0\} $
+        \item \textbf{definita negativa} se $q(v)<0\ \ \forall\,v\in V \setminus\{0\}$
         \item \textbf{semidefinita positiva} se $q(v)\geq0\ \ \forall\,v\in V $
         \item \textbf{semidefinita negativa} se $q(v)\leq0\ \ \forall\,v\in V $ 
     \end{itemize}
@@ -449,6 +449,184 @@ In particolare lo è se lo è su una base.
 \end{exc}
 %\vartriangleleft per sottospazi vettoriali
 
+\section{Geometria Euclidea}
+\subsection{Prodotto scalare}
+\begin{boxdef}[Prodotto scalare]
+    Sia $V$ un $\R$-spazio vettoriale. Una forma $b:V\times V\to \R$ \begin{enumerate}[label=\it\roman*)]
+        \item bilineare 
+        \item simmetrica
+        \item definita positiva, ovvero 
+        \[b(v,v)\geq 0\qquad  \land\qquad b(v,v)=0\ \Harr\ v=0\]
+    \end{enumerate}
+    si dice prodotto scalare su $V$, e si indica $\langle v,w \rangle$ o $v\cdot w$
+\end{boxdef}
+Per il teorema di Sylvester e per il fatto che il prodotto scalare è una forma definita positiva, segue che esiste una base $\beta=\{e_i\}_i$ di $V$ tale che
+\[\scp[e_i,e_j]=\delta_{ij}\] 
+ovvero una base ortonormale (ortogonale e normalizzata). Inoltre siccome la mappa è definita positiva, non esistono vettori isotropi.
+
+\begin{lemma}[Disuguaglianza di Cauchy-Schwarz]
+    Sia $\scp$ un prodotto scalare su $V$ ($\R$-spazio vettoriale). Allora $\forall v,w\in V$, vale \[\scp[v,w]^2\leq \scp[v,v]\cdot \scp[w,w]\]
+\end{lemma}
+\begin{proof}\footnote{Analisi A - 2Lez(2) 02/03/2023}
+    Se $x=0\lor y=0$ è ovvio. Supponiamo quindi $x\neq 0\lor y\neq 0$. Allora per linearità del prodotto scalare
+    \[\scp[\lambda x-y,\lambda x-y]=\lambda^2\scp[x,x]-2\lambda \scp[x,y]+\scp[y,y].\]
+    Osserviamo che a primo membro per definizione di prodotto scalare abbiamo una quantità positiva, di conseguenza anche a secondo membro. In particolare un polinomio in $\lambda$ è positivo $\forall \lambda$ se e solo se ha discriminante negativo, di conseguenza
+    \[\Delta=4\scp[x,y]^2-4\scp[x,x]\scp[y,y]\leq 0 \quad \Harr\quad \scp[x,y]^2\leq \scp[x,x]\scp[y,y]\]
+\end{proof}
+
+\begin{boxdef}[Spazio euclideo]
+    Uno spazio vettoriale $V$ su $\R$ con un prodotto scalare $\scp$ si dice spazio euclideo o pre-hilbertiano. Si indica $(V,\scp)$.
+\end{boxdef}
+
+Un prodotto scalare induce anche una norma, per cui uno spazio euclideo è automaticamente uno spazio normato definendo
+
+\begin{boxdef}[Norma]
+    Uno spazio euclideo è uno spazio normato definendo la norma di un vettore come 
+    \[\|v\|=\sqrt{\scp[v,v]}\in [0;+\infty[\]
+\end{boxdef}
+\paragraph{Proprietà}
+\begin{enumerate}[label=\it\roman*)]
+    \item $\|v\|\geq 0\forall v \in V \quad \land \quad \|v\|=0\ \Harr\ v=0$
+    \item (omogeneità) $\|\lambda v\|=|\lambda|\|v\|$
+    \item (disuguaglianza triangolare) $\|v\|+\|w\|\geq \|v+w\|$
+\end{enumerate}
+Osserviamo inoltre che nel punto (\textit{iii}) i due membri sono uguali solo se i due vettori sono multipli l'uno dell'altro.
+
+Il prodotto scalare permette inoltre di definire il concetto di angolo compreso tra due vettori. La definizione è corretta in quanto la disuguaglianza di Cauchy-Schwarz garantisce che il secondo membro sia in valore assoluto sempre minore di 1.
+\begin{boxdef}[Angolo compreso tra due vettori]
+    Siano $v,w \in (V,\scp)$. Si definisce allora l'angolo convesso non orientato compreso tra $v$ e $w$ l'angolo $\vartheta\in [0;\pi]$ tale che 
+    \[\cos \vartheta = \frac{\scp[v,w]}{\|v\|\cdot \|w\|}\]
+\end{boxdef}
+\begin{oss}
+    $\scp[v,w]=0\ \Harr \ \widehat{vw}=\vartheta = \frac{\pi}{2}$, ovvero la definizione usuale di perpendicolarità coincide con quella derivante dal prodotto scalare.
+\end{oss}
+\subsection{Teorema di ortogonalizzazione di Gram-Schmidt}
+
+\begin{shadedTheorem}[Ortogonalizzazione - Gram-Schmidt]
+    Sia $(v_i)_{i\in I}$ una successione (finita o infinita) di vettori nello spazio euclideo $V$ e $I$ un insieme di indici. Allora esiste una successione $(w_i)_{i\in I}$ di vettori di $V$ tali che:
+    \begin{enumerate}[label=\it\roman*)]
+        \item $\forall k\geq 1$, $\langle v_1, \dots, v_k\rangle= \langle w_1, \dots, w_k\rangle$
+        \item $w_1, \dots, w_k$ sono a due a due ortogonali.
+    \end{enumerate}
+    La successione $(w_i)_{i\in I}$ è unica a meno di multipli scalari.
+\end{shadedTheorem}
+
+\begin{proof}
+    Procediamo per induzione su $k$
+    \begin{enumerate}
+        \item[$\N0)$] Se $k=1$ non c'è niente da dimostrare.
+        \item[$\N1)$] Supponiamo che il teorema valga per $k-1$, ovvero che $\exists w_1, \dots, w_{k-1}$ che soddisfano (\textit{i}) e (\textit{ii}). Definiamo 
+        \[w_k=v_k-\sum_{i=1}^{k-1}\frac{\scp[v_k,w_i]}{\scp[w_i,w_i]}w_i\]
+        sommando solo sugli $i$ tali che $w_i\neq 0$. Stiamo rimuovendo $v$ le sue proiezioni su tutti gli altri vettori $w_i$.
+
+        Osserviamo ora che $\forall j<k$ (ricordando che per (\textit{ii}), $\forall i < k, i\neq j\implies \scp[w_i,w_j]=0$)
+        \[\scp[w_k,w_j]=\scp[v_k-\sum_{i=1}^{k-1}\frac{\scp[v_k,w_i]}{\scp[w_i,w_i]}w_i, w_j] = \scp[v_k,w_j]-\sum_{i=1}^{k-1}\frac{\scp[v_k,w_i]}{\scp[w_i,w_i]}\scp[w_i,w_j] = \scp[v_k,w_j]-\frac{\scp[v_k,w_j]}{\cancel{\scp[w_j,w_j]}}\cancel{\scp[w_j,w_j]}=0,\]
+        il che dimostra che vale (\textit{ii}). Osserviamo ora che per costruzione 
+        \[w_k\in \langle w_i, \dots, w_{k-1}, v_k \rangle\]
+        in quanto ne è combinazione lineare. Inoltre per ipotesi induttiva
+        \[\langle w_i, \dots, w_{k-1}, v_k \rangle=\langle v_1, \dots, v_k\rangle\]
+        di conseguenza per il teorema di Steinitz posso scambiare $v_k$ con $w_k$ ed ottenere comunque un insieme di generatori, quindi 
+        \[\langle w_i, \dots, w_{k-1},\undl{w_k} \rangle=\langle v_1, \dots, v_k\rangle\]
+    \end{enumerate}
+\end{proof}
+
+\begin{boxdef}[Insiemi ortogonali e ortonormali]
+    Sia $(V,\scp)$ uno spazio euclideo. Un insieme $\{v_i\}_i\subset V$ si dice ortogonale se 
+    \begin{enumerate}[label=\it\roman*)]
+        \item $v_i\neq 0\ \forall i$
+        \item $i\neq j \implies \scp[v_i,v_j]=0$
+    \end{enumerate}
+    si dice inoltre ortonormale se 
+    \begin{enumerate}[label=\it\roman*), resume]
+        \item $\scp[v_i,v_i]=1\ \forall i$
+    \end{enumerate}
+\end{boxdef}
+
+\begin{prop}
+    Sia $(V,\scp)$ uno spazio euclideo. Un insieme ortogonale $\{v_i\}_{1\leq i\leq r}\subset V$ con $r\leq \dim V$ è linearmente indipendente.
+\end{prop}
+\begin{proof}
+    Prendiamo una combinazione lineare nulla $\sum_{i=1}^ra_iv_i=0$. Osserviamo che $\forall j$
+    \[0=\scp[\sum_{i=1}^ra_iv_i,v_j] = \sum_{i=1}^ra_i\scp[v_i,v_j]=a_j\underbrace{\scp[v_j,v_j]}_{\neq 0}=0\]
+    per cui, per la legge di annullamento del prodotto, $a_j=0$.
+\end{proof}
+\begin{ex}
+    [Consideriamo $\R^4$ con la base canonica e il prodotto scalare standard. Siano $v_1=(0,1,0,1)$, $v_2=(2,1,0,1)$, $v_3=(-1,0,0,1)$ e $v_4=(0,0,1,0)$. Ortogonalizzare questo insieme di vettori]
+    Iniziamo ponendo $w_1:=v_1=(0,1,0,1)$. Ora ricaviamo di conseguenza gli altri vettori:
+    \[w_2=v_2-\frac{\scp[v_2,w_1]}{\scp[w_1,w_1]}=\begin{pmatrix}
+        2\\1\\0\\1
+    \end{pmatrix}-\frac{2}{2}\begin{pmatrix}
+        0\\1\\0\\1
+    \end{pmatrix}=\begin{pmatrix}
+        2\\0\\0\\0
+    \end{pmatrix}\]
+    \[w_3=v_3-\frac{\scp[v_3,w_1]}{\scp[w_1,w_1]}-\frac{\scp[v_3,w_1]}{\scp[w_1,w_1]}= \begin{pmatrix}
+        -1\\0\\01
+    \end{pmatrix}-\frac{1}{2}\begin{pmatrix}
+        0\\1\\0\\1
+    \end{pmatrix}-\frac{-2}{4}\begin{pmatrix}
+        2\\0\\0\\0
+    \end{pmatrix}=\begin{pmatrix}
+        0\\-\textstyle\frac{1}{2}\\0\\\textstyle\frac{1}{2}
+    \end{pmatrix}\]
+
+    \[w_4=v_4-\frac{\scp[v_4,w_1]}{\scp[w_1,w_1]}-\frac{\scp[v_4,w_2]}{\scp[w_2,w_2]}-\frac{\scp[v_4,w_1]}{\scp[w_3,w_3]}= \begin{pmatrix}
+        0\\0\\1\\0
+    \end{pmatrix}-0\begin{pmatrix}
+        0\\1\\0\\1
+    \end{pmatrix}-0\begin{pmatrix}
+        2\\0\\0\\0
+    \end{pmatrix}-0\begin{pmatrix}
+        0\\-\textstyle\frac{1}{2}\\0\\\textstyle\frac{1}{2}
+    \end{pmatrix}=\begin{pmatrix}
+        0\\0\\1\\0
+    \end{pmatrix}\]
+\end{ex}
+
+\begin{prop}
+    Siano $(V,\scp)$ uno spazio euclideo e $W\sottosp V$. Allora $V=W\oplus W^\perp$.
+\end{prop}
+\begin{proof}
+    Prendiamo una base ortonormale di $V$ $\{e_1, \dots, e_n\}$ tale che $W=\langle e_1,\dots, e_r\rangle$. Allora 
+    \[v=\sum_{i=1}^na_ie_i=\underbrace{\sum_{i=1}^ra_ie_i}_{\in W}+\sum_{i=r+1}^na_ie_i.\]
+    Osserviamo che $\forall 1\leq j\leq r$, 
+    \[\scp[\sum_{i=r+1}^na_ie_i, e_j]=0\]
+    per ipotesi, di conseguenza $\scp[\sum_{i=r+1}^na_ie_i\in W^\perp]$. Da ciò segue che $V=W+W^\perp$. Siccome non esistono vettori isotropi, $W \cap W^\perp=\{0\}$. La somma è quindi diretta.
+\end{proof}
+
+\subsection{Prodotto esterno}
+
+\begin{boxdef}[Prodotto esterno]
+    Consideriamo un $\R$-spazio vettoriale $V$ di dimensione 3. Si definisce prodotto esterno la mappa 
+    \[\funcdef{\wedge}{\R^3\times \R^3}{\R^3}{\left(\begin{pmatrix}
+        x_1\\x_2\\x_3
+    \end{pmatrix}, \begin{pmatrix}
+        y_1\\y_2\\y_3
+    \end{pmatrix}\right)}{\begin{pmatrix}
+        x_1\\x_2\\x_3
+    \end{pmatrix}\wedge \begin{pmatrix}
+        y_1\\y_2\\y_3
+    \end{pmatrix}:=\begin{pmatrix}
+        x_2y_3-x_3y_2\\x_3y_1-x_1y_3\\x_1y_2-y_2x_1
+    \end{pmatrix}}\]
+\end{boxdef}
+\paragraph{Proprietà}
+\begin{enumerate}[label={\it\roman*})]
+    \item $v\wedge w\neq 0\ \Harr\ \nexists k : v\neq kw$
+    \item $\scp[v\wedge w, v]= \scp[v\wedge w, w]=0$
+    \item $v\wedge w = -w\wedge v$
+    \item $\|v\wedge w\|^2=\|v^2\|\cdot\|w^2\|-\scp[v,w]^2$
+    \item $(\lambda v)\wedge w = v\wedge (\lambda w)= \lambda (v\wedge v)$
+    \item $v\land (w\land u)=(v\land w)\land u$
+\end{enumerate}
+\begin{proof} Dimostriamo solo (\textit{ii}). Osserviamo che 
+    \[0=\begin{vmatrix}
+        x_1&x_2&x_3\\
+        x_1&x_2&x_3\\
+        y_1&y_2&y_3\\
+    \end{vmatrix}=x_1(x_2y_3-x_3y_2)+x_2(x_3y_1-x_1y_3)+x_3(x_1y_2-y_2x_1)=\scp[v, v\wedge w]\]
+    
+\end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -499,4 +677,6 @@ La dimostrazione è analoga per matrici e mappe antisimmetriche.
         \item $\psi$ è suriettiva: segue dal teorema Nullità + Rango.
     \end{itemize}
 \end{proof}
+
+
 \end{document}

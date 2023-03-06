@@ -1,6 +1,12 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
 \contentsline {section}{\numberline {1}Forme bilineari}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Matrici simili}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.1}Matrici simili}{2}{subsection.1.1}%
 \contentsline {paragraph}{Notazione}{2}{section*.2}%
-\contentsline {section}{\numberline {2}Soluzioni degli esercizi}{8}{section.2}%
+\contentsline {section}{\numberline {2}Geometria Euclidea}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Prodotto scalare}{7}{subsection.2.1}%
+\contentsline {paragraph}{Proprietà}{8}{section*.4}%
+\contentsline {subsection}{\numberline {2.2}Teorema di ortogonalizzazione di Gram-Schmidt}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Prodotto esterno}{10}{subsection.2.3}%
+\contentsline {paragraph}{Proprietà}{10}{section*.5}%
+\contentsline {section}{\numberline {3}Soluzioni degli esercizi}{11}{section.3}%
