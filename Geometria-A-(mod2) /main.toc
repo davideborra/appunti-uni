@@ -9,4 +9,7 @@
 \contentsline {subsection}{\numberline {2.2}Teorema di ortogonalizzazione di Gram-Schmidt}{8}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Prodotto esterno}{10}{subsection.2.3}%
 \contentsline {paragraph}{Proprietà}{10}{section*.5}%
-\contentsline {section}{\numberline {3}Soluzioni degli esercizi}{11}{section.3}%
+\contentsline {subsection}{\numberline {2.4}Spazi affini}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Sistemi di riferimento affini}{11}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Sottospazi affini}{11}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Soluzioni degli esercizi}{13}{section.3}%

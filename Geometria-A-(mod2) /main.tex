@@ -7,8 +7,6 @@
 
 \let\undl\underline
 \newcommand{\scp}[1][\cdot,\cdot]{\left\langle #1 \right\rangle}
-\newcommand{\gln}[2]{\mathpzc{Gl}_{#1}(#2)}
-\let\sottosp\vartriangleleft
 
 \makeatletter
 \renewcommand*\env@cases[1][1.2]{%
@@ -153,7 +151,7 @@ Data una matrice, ad essa è associata una forma bilineare del tipo $f_A(x,y)=x^
     Si dice forma una mappa ad un campo, non necessariamente lineare. 
 \end{ricorda}
 \paragraph*{Proprietà} (seguono dalla linearità di $b$)
-\begin{enumerate}[label={\it\roman*})]
+\begin{enumerate}[label=$\roman*)$]
     \item $q(\lambda v)=\lambda^2q(v)$
     \item $2b(v,w)=q(w+v)-q(v)-q(w)$
 \end{enumerate}
@@ -452,7 +450,7 @@ In particolare lo è se lo è su una base.
 \section{Geometria Euclidea}
 \subsection{Prodotto scalare}
 \begin{boxdef}[Prodotto scalare]
-    Sia $V$ un $\R$-spazio vettoriale. Una forma $b:V\times V\to \R$ \begin{enumerate}[label=\it\roman*)]
+    Sia $V$ un $\R$-spazio vettoriale. Una forma $b:V\times V\to \R$ \begin{enumerate}[label=$\roman*)$]
         \item bilineare 
         \item simmetrica
         \item definita positiva, ovvero 
@@ -485,7 +483,7 @@ Un prodotto scalare induce anche una norma, per cui uno spazio euclideo è autom
     \[\|v\|=\sqrt{\scp[v,v]}\in [0;+\infty[\]
 \end{boxdef}
 \paragraph{Proprietà}
-\begin{enumerate}[label=\it\roman*)]
+\begin{enumerate}[label=$\roman*)$]
     \item $\|v\|\geq 0\forall v \in V \quad \land \quad \|v\|=0\ \Harr\ v=0$
     \item (omogeneità) $\|\lambda v\|=|\lambda|\|v\|$
     \item (disuguaglianza triangolare) $\|v\|+\|w\|\geq \|v+w\|$
@@ -504,7 +502,7 @@ Il prodotto scalare permette inoltre di definire il concetto di angolo compreso 
 
 \begin{shadedTheorem}[Ortogonalizzazione - Gram-Schmidt]
     Sia $(v_i)_{i\in I}$ una successione (finita o infinita) di vettori nello spazio euclideo $V$ e $I$ un insieme di indici. Allora esiste una successione $(w_i)_{i\in I}$ di vettori di $V$ tali che:
-    \begin{enumerate}[label=\it\roman*)]
+    \begin{enumerate}[label=$\roman*)$]
         \item $\forall k\geq 1$, $\langle v_1, \dots, v_k\rangle= \langle w_1, \dots, w_k\rangle$
         \item $w_1, \dots, w_k$ sono a due a due ortogonali.
     \end{enumerate}
@@ -532,12 +530,12 @@ Il prodotto scalare permette inoltre di definire il concetto di angolo compreso 
 
 \begin{boxdef}[Insiemi ortogonali e ortonormali]
     Sia $(V,\scp)$ uno spazio euclideo. Un insieme $\{v_i\}_i\subset V$ si dice ortogonale se 
-    \begin{enumerate}[label=\it\roman*)]
+    \begin{enumerate}[label=$\roman*)$]
         \item $v_i\neq 0\ \forall i$
         \item $i\neq j \implies \scp[v_i,v_j]=0$
     \end{enumerate}
     si dice inoltre ortonormale se 
-    \begin{enumerate}[label=\it\roman*), resume]
+    \begin{enumerate}[label=$\roman*)$, resume]
         \item $\scp[v_i,v_i]=1\ \forall i$
     \end{enumerate}
 \end{boxdef}
@@ -611,7 +609,7 @@ Il prodotto scalare permette inoltre di definire il concetto di angolo compreso 
     \end{pmatrix}}\]
 \end{boxdef}
 \paragraph{Proprietà}
-\begin{enumerate}[label={\it\roman*})]
+\begin{enumerate}[label=$\roman*$)]
     \item $v\wedge w\neq 0\ \Harr\ \nexists k : v\neq kw$
     \item $\scp[v\wedge w, v]= \scp[v\wedge w, w]=0$
     \item $v\wedge w = -w\wedge v$
@@ -627,6 +625,111 @@ Il prodotto scalare permette inoltre di definire il concetto di angolo compreso 
     \end{vmatrix}=x_1(x_2y_3-x_3y_2)+x_2(x_3y_1-x_1y_3)+x_3(x_1y_2-y_2x_1)=\scp[v, v\wedge w]\]
     
 \end{proof}
+
+\subsection{Spazi affini}
+
+\begin{boxdef}[Spazio Affine]
+    $\mathbb{K}$ campo, $V ~~ \mathbb{K}$-spazio vettoriale.
+    Uno \undl{spazio affine con giacitura $V$} è un insieme $\mathbb{A}$ munito di una mappa
+    \[\funcdef{\overline{\:\cdot\:\cdot\:}}{\A\times \A}{V}{(P,Q)}{\overline{PQ}}\]
+    tale che 
+    \begin{enumerate}[label=$\roman*)$]
+        \item $\forall P\in \A, \forall v\in V, \exists!Q\in \A : \overline{PQ}=v$;
+        \item $\forall P,Q,R\in \A, \overline{PQ}+\overline{QR}=PR$.
+    \end{enumerate}
+    Gli elementi di $\A$ si dicono \undl{punti}.
+\end{boxdef}
+
+Uno spazio vettoriale è uno spazio affine su sé stesso definendo 
+\[\funcdef{\overline{\:\cdot\:\cdot\:}}{V\times V}{V}{(v,w)}{w-v}\]
+
+\begin{exc}\label{exc: sottosp aff-vett}
+    Dimostrare che con questa definizione uno spazio vettoriale è uno spazio affine su sé stesso, ovvero che soddisfa (\textit{i}) e (\textit{ii}). \qquad {\hyperref[sol: sottosp aff-vett]{\footnotesize Soluzione a pag. \pageref*{sol: sottosp aff-vett}}}
+\end{exc}
+
+\begin{oss}
+    $\overline{PP}=\undl{0}$, infatti da (\textit{ii}) segue che $\overline{PP}+\overline{PP}=\overline{PP}$.
+\end{oss}
+
+\begin{boxdef}[Dimensione di uno spazio affine]
+    Sia $\mathbb{A}$ uno spazio affine con giacitura $V$ ($\mathbb{K}$-spazio vettoriale). Si definisce la dimensione di $\mathbb{A}$ come la dimensione di $V$.
+    \[
+    \dim \mathbb{A}:=\dim V
+    \]
+\end{boxdef}
+
+\begin{boxdef}[Traslazione]
+    Si definisce traslazione una mappa \[\begin{array}{cccl}t:& \mathbb{A}\times V&\longrightarrow &\mathbb{A}\\
+        &(P,v)&\longmapsto&Q=t(P,v)=:P+v\end{array}\]
+        dove $P+v$ si chiama traslato di $P$ per $v$ tale per cui $\overline{PQ}=v$
+\end{boxdef}
+
+\paragraph*{Proprietà} Segue direttamente dagli assiomi dello spazio affine che 
+\begin{enumerate}[label=$\roman*)$]
+    \item $t(P,\underline{0})=P$
+    \item $t(t(P,u),v)=t(P,u+v)$
+    \item $\forall P,Q\in \mathbb{A}~~~\exists!v:Q=t(P,v)$
+\end{enumerate}
+
+
+\subsection{Sistemi di riferimento affini}
+\begin{boxdef}[Sistema di riferimento affine]
+    Sia $\mathbb{A}$ uno spazio affine con giacitura $V$ ($\mathbb{K}$-spazio vettoriale) con $\dim \mathbb{A}=n<\infty$.
+    Un sistema di riferimento affine è dato da un punto $O$ detto \undl{origine} e una base $\beta$ di $V$.
+\end{boxdef}
+Grazie ad un sistema di riferimento è possibile esprimere i punti attraverso coordinate, come avevamo precedentemente fatto per i vettori. La differenza sta nel fatto che di per sé uno spazio affine non presenti un punti privilegiato, come può essere lo $0$ nello spazio vettoriale, per cui per poter esprimere i punti come coordinate bisogna sceglierne uno.
+
+\subsection{Sottospazi affini}
+\begin{boxdef}
+    Siano $\mathbb{A}$ spazio affine con giacitura $V$, $P\in \mathbb{A}$ un punto e $W\subseteq V$ un sottospazio vettoriale. Allora si dice \undl{sottospazio affine} di $\mathbb{A}$ l’insieme
+    $$
+    S=P+W=\{Q\in \A\:|\: \overline{PQ}\in W\}
+    $$
+\end{boxdef}
+\begin{lemma}
+    Con la notazione precedente, $P+W$ è uno spazio affine con giacitura $W$
+\end{lemma}
+\begin{proof}
+    Dobbiamo dimostrare che presi qualsiasi $A, B\in S$, allora $\overline{AB}\in W$. Per $(ii)$ si ha che $\overline{AB}= \overline{AP}+\overline{PB}\in W$ per definizione di S.  
+\end{proof}
+Vediamo ora una serie di esempi di sottospazi affini:
+\begin{ex}
+    [Sia $\A^2=\R^2$ con il sistema di riferimento canonico. Trovare la equazioni parametriche e cartesiane della retta $S$ passante per $P=(-1,2)$ con direzione (giacitura) $w=(1,3)$.] 
+
+    Il fatto che un punto appartenga a $S$ significa che è della forma $P+kw$. Di conseguenza
+    \[\begin{cases}
+        x=-1+t\\
+        y=2-3t
+    \end{cases}\qquad \Harr\qquad 3x+y=1\]
+    Per ottenere la forma cartesiana (a destra) si può anche procedere applicando la definizione: i vettori $PQ$ e $w$ devono essere linearmente dipendenti, ovvero la matrice seguente deve avere rango 2, quindi 
+    \[\begin{vmatrix}
+        x+1&y+2\\
+        1&3
+    \end{vmatrix}=0\]
+\end{ex}
+
+\begin{ex}[Generalizziano l'esempio seguente considerando lo spazio affine $\A$ di dimensione $n$ con il sistema di riferimento canonico e scriviamo le equazioni del sottospazio affine $S$ passante per $P=(p_1, \dots, p_n)$ con giacitura $W=\langle w_1,\dots, w_r\rangle$, dove $w_i=(w_{i1},\dots,w_{in})$ e i $w_i$ sono linearmente indipendenti.]
+\paragraph*{Equazioni cartesiane}
+Per determinare l'equazione cartesiana abbiamo bisogno che un vettore generico $\overline{PQ}$ sia linearmente dipendente dagli altri, per cui che il rango della matrice seguente sia pari a $r$
+\[\rk\begin{pmatrix}
+    x_1-p_1&x_2-p_2&\dots&x_n-p_n\\
+    w_{11}&w_{12} & \dots & w_{1n}\\
+    \vdots&\vdots&\ddots&\vdots\\
+    w_{r1}&w_{r2} & \dots & w_{rn}\\
+\end{pmatrix}=r\]
+
+Siccome i vettori sono linearmente indipendenti, deve esistere un minore di ordine $r$ non nullo. Per avere che la matrice ha rango $r$ bisogna quindi imporre che tutti i minori orlati abbiano determinante nullo. Otteniamo quindi $n-r$ equazioni.
+\paragraph*{Equazioni parametriche}
+Per determinare le equazioni parametriche basta semplicemente procedere come prima, ricordando che $Q\in S \Harr Q=P+v $ con $v\in W$, ovvero $v=\sum_it_iw_i$. Segue quindi che (separando nelle componenti):
+\[\begin{cases}
+    x_i=p_1+t_1w_{11}+t_2w_{21}+\dots+t_rw_{r1}\\
+    x_i=p_1+t_1w_{12}+t_2w_{22}+\dots+t_rw_{r2}\\
+    \ \vdots\\
+    x_i=p_1+t_1w_{1n}+t_2w_{2n}+\dots+t_rw_{rn}\\
+\end{cases}\]
+\end{ex}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -678,5 +781,13 @@ La dimostrazione è analoga per matrici e mappe antisimmetriche.
     \end{itemize}
 \end{proof}
 
+\subsubsection*{Esercizio \ref{exc: sottosp aff-vett}}\label{sol: sottosp aff-vett}
+\begin{proof}~
+    \begin{enumerate}[label=$\roman*)$]
+        \item $\forall v,w\in V,\exists!u\in V:\overline{vu}=w$. Osserviamo che basta definire $u:=v+w$ e segue che $\overline{vu}=u-v=(v+w)-v=w$.
+        \item $\forall u,v,w\in V, \overline{uv}+\overline{vw}=\overline{uw}$. Applicando la definizione segue infatti che 
+        \[\overline{uv}+\overline{vw}= (v-u)+(w-v)=w-u=\overline{uw}.\]
+    \end{enumerate}
+\end{proof}
 
 \end{document}
