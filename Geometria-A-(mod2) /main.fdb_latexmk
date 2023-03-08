@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1678295220 "/Users/davideborra/Documents/GitHub/appunti-uni/Geometria-A-(mod2) /main.tex" "main.pdf" "main" 1678295222
-  "/Users/davideborra/Documents/GitHub/appunti-uni/Geometria-A-(mod2) /main.tex" 1678295220 43878 4b490472b1047b3f43fc2d7e51c2bea2 ""
+["pdflatex"] 1678295337 "/Users/davideborra/Documents/GitHub/appunti-uni/Geometria-A-(mod2) /main.tex" "main.pdf" "main" 1678295338
+  "/Users/davideborra/Documents/GitHub/appunti-uni/Geometria-A-(mod2) /main.tex" 1678295337 43878 2e47106f1778e9bf9e6b96206ac095c2 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -336,12 +336,12 @@
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "CreativeCommons/by-nc-nd.png" 1672951571 20935 a4212c1a42d241a1351fc139b20de70b ""
   "lambdatex.sty" 1678211368 8862 14622ba94a12c3100b9a45e756cc1cae ""
-  "main.aux" 1678295221 3739 468971683efd99972c5a553eb6876de6 "pdflatex"
-  "main.out" 1678295221 1994 129579182965f2cd2d64369faa71b430 "pdflatex"
-  "main.tex" 1678295220 43878 4b490472b1047b3f43fc2d7e51c2bea2 ""
-  "main.thl" 1678295221 427 cd837c3e3a4b41a32d5498f7a3c21255 "pdflatex"
-  "main.toc" 1678295221 1335 471c4c97417e3567d213ae982bf00d18 "pdflatex"
-  "theoremlist.sty" 1678269658 4415 88db6d9ce9707eaf3748014b340b4684 ""
+  "main.aux" 1678295338 3739 468971683efd99972c5a553eb6876de6 "pdflatex"
+  "main.out" 1678295338 1994 129579182965f2cd2d64369faa71b430 "pdflatex"
+  "main.tex" 1678295337 43878 2e47106f1778e9bf9e6b96206ac095c2 ""
+  "main.thl" 1678295338 427 cd837c3e3a4b41a32d5498f7a3c21255 "pdflatex"
+  "main.toc" 1678295338 1335 471c4c97417e3567d213ae982bf00d18 "pdflatex"
+  "theoremlist.sty" 1678295233 4415 88db6d9ce9707eaf3748014b340b4684 ""
   (generated)
   "main.aux"
   "main.log"
