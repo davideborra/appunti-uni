@@ -4,6 +4,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass{article}     %type of document
 \usepackage{lambdatex} 
+\usepackage{theoremlist}
+
+
+\newtheoremx{sit}{Situazione}
+\newcommand\sitref[1]{\hyperref[sit: #1]{situazione \ref*{sit: #1}}}
 
 \let\undl\underline
 \newcommand{\scp}[1][\cdot,\cdot]{\left\langle #1 \right\rangle}
@@ -729,7 +734,105 @@ Per determinare le equazioni parametriche basta semplicemente procedere come pri
 \end{cases}\]
 \end{ex}
 
+\begin{boxdef}[Sottospazi paralleli]
+    Siano $\A$ uno spazio affine su $V$ ($\K$-spazio vettoriale), $S$ e $T$ due sottospazi affini con giacitura rispettivamente $U$ e $W$. Essi si dicono paralleli se $U\sottosp W$ o $W\sottosp U$.
+\end{boxdef}
 
+\subsection{Posizioni reciproche di di sottospazi affini}
+\begin{sit}\label{sit: 1}
+    Sia $\A$ uno spazio affine su $V$ ($\K$-spazio vettoriale) con il sistema di riferimento canonico $(O,\{e_1,\dots, e_n\})$ e siano $P=(p_1,\dots, p_n)$ e $R=(r_1, \dots, r_n)$ due punti di $\A$. Siano inoltre $S$ il sottospazio affine per $P$ con giacitura $W=\langle w_1, \dots, w_r\rangle$ e T il sottospazio affine per $R$ con giacitura $U=\langle w_1, \dots, u_t\rangle$
+\end{sit}
+
+Osserviamo che l'intersezione tra due sottospazi affini è un sottospazio affine tale che
+\[S\cap T =\{Q\in \A\:|\:Q\in S \land Q\in T\}\]
+ovvero $Q=(x_1, \dots, x_n)$ soddisfa sia le equazioni che definiscono $S$ che le equazioni che definiscono $T$. Otteniamo in questo modo un sistema lineare in $r+t$ equazioni che può essere
+\begin{itemize}
+    \item incompatibile, quindi $S\cap T=\varnothing$
+    \item compatibile con rango $\rho$ tale che $\max\{n-r,n-t\}\leq \rho\leq (n-r)+(n-t)$.
+\end{itemize}
+\begin{lemma}[Dimensione dell'intersezione]
+    Nella \sitref{1}, si hanno due possibilità:
+    \begin{itemize}
+        \item $S\cap T=\varnothing$
+        \item $\dim S+\dim T -\dim \A \leq \dim S\cap T \leq \min\{\dim S,\dim T\} $
+    \end{itemize}
+\end{lemma}
+
+\begin{proof}
+    Da quanto detto prima segue che $\dim S\cap T = n-\rho = n-(n-r)-(n-t)=r+t-n$.
+\end{proof}
+
+\begin{oss}
+    Nella \sitref{1}, ad $S$ è associato un sistema del tipo 
+    \[\begin{cases}
+        a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n+b_1=0\\
+        ~\vdots\\
+        a_{(n-r),1}x_1+a_{(n-r),2}x_2+\dots+a_{(n-r),n}x_n+b_{(n-r)}=0,\\
+    \end{cases}\]
+    allora la giacitura $W$ di $S$ è determinata il sistema omogeneo associato, ovvero 
+    \[S:~\rk\begin{vmatrix}
+        x_1-p_1&\cdots&x_n-p_n\\
+        w_{11}&\cdots& w_{1n}\\
+        \vdots& \ddots & \vdots \\
+        w_{r1}&\cdots& w_{rn}\\
+    \end{vmatrix}=r\qquad \qquad W:~\rk\begin{vmatrix}
+        x_1&\cdots&x_n\\
+        w_{11}&\cdots& w_{1n}\\
+        \vdots& \ddots & \vdots \\
+        w_{r1}&\cdots& w_{rn}\\
+    \end{vmatrix}=r\]
+\end{oss}
+
+\paragraph{Un caso particolare: due rette in $\A^3$}
+Siano $r$ e $s$ due rette generiche nello spazio affine definite come segue:
+\[r:\ \begin{cases}
+    a_1x+b_1y+c_1z+d_1=0\\
+    a_2x+b_2y+c_2z+d_2=0
+\end{cases}\qquad \qquad s:\ \begin{cases}
+    a_3x+b_3y+c_3z+d_3=0\\
+    a_4x+b_4y+c_4z+d_4=0
+\end{cases}\]
+possono verificarsi quattro casi:
+\begin{itemize}
+    \item le due rette sono coincidenti (i.e. si intersecano in infiniti punti);
+    \item le due rette sono incidenti (i.e. si intersecano in un punto);
+    \item le due rette sono parallele (i.e. non si intersecano e hanno la stessa giacitura);
+    \item le due rette sono sghembe (i.e. non si intersecano e hanno giaciture diverse).
+\end{itemize}
+\begin{boxdef}[Rette complanari e sghembe]
+    Siano $r$ e $s$ due rette nello spazio $\A^3$, esse si dicono
+    \begin{itemize}
+        \item \textbf{complanari} se $r\cap s\neq \varnothing$ o $r\parallelo s$
+        \item \textbf{sghembe} se non sono complanari, ovvero se non si intersecano e non sono parallele.
+    \end{itemize}
+\end{boxdef}
+
+\begin{prop}
+    $r$ e $s$ come definite precedentemente sono complanari se e solo se 
+    \[\begin{vmatrix}
+        a_1&b_1&c_1&d_1\\
+        a_2&b_2&c_2&d_2\\
+        a_3&b_3&c_3&d_3\\
+        a_4&b_4&c_4&d_4\\
+    \end{vmatrix}=0\]
+\end{prop}
+\begin{proof}
+    Chiamiamo $C$ la matrice dei coefficienti e $D$ la matrice dei termini noti. Sia inoltre $A$ la matrice $(C|D)$ che si ottiene orlando $C$ con $D$.
+    \begin{itemize}
+        \item[\say{$\Rarr$}] Se le due rette si intersecano significa che il sistema è compatibile, ovvero (Rouché-Capelli) \[3\geq \rk C=\rk A\implies \det A=0;\]
+        se sono parallele, allora hanno giacitura uguale, per cui 
+        \[\rk C=2\implies \rk A\leq 3\implies \det A=0\]
+        \item[\say{$\Larr$}] Se il determinante della matrice è $0$, il rango è $2$ o $3$. Non può essere 1 perché almeno $2$ equazioni sono indipendenti per ipotesi ($r$ e $s$ sono rette). Di conseguenza
+        \begin{itemize}
+            \item se $\rk A=2$ significa che le due rette sono coincidenti;
+            \item se $\rk A=3$ può essere:
+            \begin{itemize}
+                \item $\rk C=3$, allora le rette si intersecano in un punto;
+                \item $\rk C=2$, le rette hanno la stesa giacitura ma non si intersecano, per cui sono parallele.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -790,4 +893,7 @@ La dimostrazione è analoga per matrici e mappe antisimmetriche.
     \end{enumerate}
 \end{proof}
 
+\newpage
+\section{Situazioni}
+\printtheorems
 \end{document}
