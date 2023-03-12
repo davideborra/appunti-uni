@@ -28,6 +28,7 @@
 \makeatletter
 \let\runauthor\@author
 \let\runtitle\@title
+\makeatother
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 \renewcommand{\footrulewidth}{0.4pt}
 
@@ -56,14 +57,15 @@
     {\footnotesize\href{mailto:davide.borra@studenti.unitn.it}{davide.borra@studenti.unitn.it} - \href{http://davideborra.github.io}{davideborra.github.io}}
     \restoregeometry\newpage
     \thispagestyle{empty}
+\end{titlepage}
     \begin{abstract}
         \centering Queste sono le note prodotte durante il secondo modulo del corso di Geometria A, tenuto dal prof.~Marco Andreatta. Il docente del corso segue il libro \say{Geometria 1} di Edoardo Sernesi (Ed. Bollati Boringhieri).
     \end{abstract}
     \tableofcontents
     \creativecommons
+    \newpage
     
     
-\end{titlepage}
     \lhead{\runtitle}\
     \chead{}
     \rhead{\rightmark}
@@ -833,6 +835,8 @@ possono verificarsi quattro casi:
         \end{itemize}
     \end{itemize}
 \end{proof}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
